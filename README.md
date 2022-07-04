@@ -1,8 +1,8 @@
 # Notice
 
-## This is a fork of <https://github.com/ayamir/nvimdots>
+This is a fork of <https://github.com/ayamir/nvimdots>
 
-## _Main_ branch is Highly recommended
+_Main_ branch is Highly recommended
 
 # Introduction
 
