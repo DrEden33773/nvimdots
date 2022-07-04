@@ -224,7 +224,8 @@ local shellcheck = require("efmls-configs.linters.shellcheck")
 local black = require("efmls-configs.formatters.black")
 local luafmt = require("efmls-configs.formatters.stylua")
 local clangfmt = {
-    -- formatCommand = "clang-format -style='{BasedOnStyle: LLVM, IndentWidth: 2}'",
+    -- formatCommand = "clang-format -style='{BasedOnStyle: LLVM, IndentWidth: 2}'", => abandoned
+
     -- use .clang-format to format the file.
     formatCommand = "clang-format -style=file",
     formatStdin = true
@@ -237,7 +238,6 @@ local shfmt = require("efmls-configs.formatters.shfmt")
 -- local rustfmt = require("modules.completion.efm.formatters.rustfmt")
 -- local rust_analyzer = require("modules.completion.efm.linters.rust_analyzer")
 local rust_analyzer = require 'lspconfig'.rust_analyzer.setup {}
-local pyright = require 'lspconfig'.pyright.setup {}
 
 -- Override default config here
 
@@ -256,7 +256,7 @@ efmls.setup({
     lua = { formatter = luafmt },
     c = { formatter = clangfmt, linter = clangtidy },
     cpp = { formatter = clangfmt, linter = clangtidy },
-    python = { formatter = black, linter = pyright },
+    python = { formatter = black },
     vue = { formatter = prettier },
     typescript = { formatter = prettier, linter = eslint },
     javascript = { formatter = prettier, linter = eslint },
