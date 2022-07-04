@@ -220,8 +220,11 @@ local clangtidy = require("efmls-configs.linters.clang_tidy")
 local eslint = require("efmls-configs.linters.eslint")
 local flake8 = require("efmls-configs.linters.flake8")
 local shellcheck = require("efmls-configs.linters.shellcheck")
+local pylint = require 'efmls-configs.linters.pylint'
+local golint = require 'efmls-configs.linters.golint'
 
-local black = require("efmls-configs.formatters.black")
+local goimports = require 'efmls-configs.formatters.goimports'
+local autopep8 = require 'efmls-configs.formatters.autopep8'
 local luafmt = require("efmls-configs.formatters.stylua")
 local clangfmt = {
     -- formatCommand = "clang-format -style='{BasedOnStyle: LLVM, IndentWidth: 2}'", => abandoned
@@ -256,7 +259,7 @@ efmls.setup({
     lua = { formatter = luafmt },
     c = { formatter = clangfmt, linter = clangtidy },
     cpp = { formatter = clangfmt, linter = clangtidy },
-    python = { formatter = black },
+    python = { formatter = autopep8, linter = pylint },
     vue = { formatter = prettier },
     typescript = { formatter = prettier, linter = eslint },
     javascript = { formatter = prettier, linter = eslint },
@@ -271,7 +274,9 @@ efmls.setup({
     rust = {
         -- formatter = rustfmt, => needless because rust-analyzer contains a formatter
         linter = rust_analyzer
-    }
+    },
+    json = { formatter = prettier, linter = eslint },
+    go = { formatter = goimports, linter = golint },
 })
 
 formatting.configure_format_on_save()
