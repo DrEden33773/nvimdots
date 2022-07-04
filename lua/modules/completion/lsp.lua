@@ -237,6 +237,7 @@ local shfmt = require("efmls-configs.formatters.shfmt")
 -- local rustfmt = require("modules.completion.efm.formatters.rustfmt")
 -- local rust_analyzer = require("modules.completion.efm.linters.rust_analyzer")
 local rust_analyzer = require 'lspconfig'.rust_analyzer.setup {}
+local pyright = require 'lspconfig'.pyright.setup {}
 
 -- Override default config here
 
@@ -255,7 +256,7 @@ efmls.setup({
     lua = { formatter = luafmt },
     c = { formatter = clangfmt, linter = clangtidy },
     cpp = { formatter = clangfmt, linter = clangtidy },
-    python = { formatter = black },
+    python = { formatter = black, linter = pyright },
     vue = { formatter = prettier },
     typescript = { formatter = prettier, linter = eslint },
     javascript = { formatter = prettier, linter = eslint },
