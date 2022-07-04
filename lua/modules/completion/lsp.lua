@@ -225,6 +225,7 @@ local golint = require 'efmls-configs.linters.golint'
 
 local goimports = require 'efmls-configs.formatters.goimports'
 local autopep8 = require 'efmls-configs.formatters.autopep8'
+local black = require 'efmls-configs.formatters.black'
 local luafmt = require("efmls-configs.formatters.stylua")
 local clangfmt = {
     -- formatCommand = "clang-format -style='{BasedOnStyle: LLVM, IndentWidth: 2}'", => abandoned
@@ -259,7 +260,7 @@ efmls.setup({
     lua = { formatter = luafmt },
     c = { formatter = clangfmt, linter = clangtidy },
     cpp = { formatter = clangfmt, linter = clangtidy },
-    python = { formatter = autopep8, linter = pylint },
+    python = { formatter = black, linter = pylint },
     vue = { formatter = prettier },
     typescript = { formatter = prettier, linter = eslint },
     javascript = { formatter = prettier, linter = eslint },
